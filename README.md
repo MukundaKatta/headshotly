@@ -1,22 +1,47 @@
 # Headshotly
 
-> Studio-grade headshots. From your selfies.
+Studio-grade headshots from your selfies. Forty professional headshots in twenty minutes.
 
-Forty professional headshots in twenty minutes. No photographer, no studio, no suit required.
+**Status:** v0 skeleton — landing page + selfie-upload preview route. Full AI generation not yet wired.
 
-## What you get
+**Landing:** https://headshotly.vercel.app
 
-- **Upload 12 selfies** — We train a model on your face. The real you, not a generic avatar.
-- **Forty outfits and backdrops** — LinkedIn-ready, actor-headshot-ready, dating-app-ready. Your call.
-- **Flat price, lifetime use** — One fee. Every photo yours to keep, forever.
+---
 
-## Category
+## Stack
 
-Consumer AI. Part of a 50-product exploration of high-demand consumer and SMB markets.
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 15 (App Router) |
+| Language | TypeScript (strict) |
+| Styling | Tailwind v4 |
+| Fonts | Inter via `next/font/google` |
+| Hosting | Vercel (zero config) |
+| Waitlist | https://waitlist-api-sigma.vercel.app |
 
-## Status
+## Run locally
 
-Landing page live with interactive demo and functional waitlist.
+```bash
+pnpm install
+pnpm dev
+```
 
-- **Live:** https://mukundakatta.github.io/headshotly/
-- **Waitlist API:** https://waitlist-api-sigma.vercel.app/api/waitlist
+Open http://localhost:3000.
+
+## Deploy
+
+Push to `main` — Vercel picks it up automatically. No environment variables required.
+
+## Routes
+
+| Route | Description |
+|---|---|
+| `/` | Landing page (original copy + design preserved) |
+| `/try` | Upload a selfie, see 3 mocked headshot variants (studio, outdoor, corporate) |
+| `/api/waitlist` | `POST { email }` → forwards to waitlist-api-sigma with `product: "headshotly"` |
+
+## What's next
+
+- Wire real AI headshot generation behind `/try`
+- Multiple selfie upload + model training flow
+- Auth + per-user gallery
